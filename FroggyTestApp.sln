@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FroggyTest.WPF", "FroggyTest.WPF\FroggyTest.WPF.csproj", "{3EF97807-BC37-4BED-832A-91358E7ED4F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FroggyTest.WPF", "FroggyTest.WPF\FroggyTest.WPF.csproj", "{3EF97807-BC37-4BED-832A-91358E7ED4F9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Froggy.Database", "Froggy.Database\Froggy.Database.csproj", "{6490FCD8-6A47-4FB8-9C34-1896A5CF0FC2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FroggyTest.WinForms", "FroggyTest.WinForms\FroggyTest.WinForms.csproj", "{C335DA36-F2AC-4447-9AA1-1AF6612B0D8E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,13 @@ Global
 		{3EF97807-BC37-4BED-832A-91358E7ED4F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3EF97807-BC37-4BED-832A-91358E7ED4F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3EF97807-BC37-4BED-832A-91358E7ED4F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6490FCD8-6A47-4FB8-9C34-1896A5CF0FC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6490FCD8-6A47-4FB8-9C34-1896A5CF0FC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6490FCD8-6A47-4FB8-9C34-1896A5CF0FC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6490FCD8-6A47-4FB8-9C34-1896A5CF0FC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C335DA36-F2AC-4447-9AA1-1AF6612B0D8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C335DA36-F2AC-4447-9AA1-1AF6612B0D8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C335DA36-F2AC-4447-9AA1-1AF6612B0D8E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

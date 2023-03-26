@@ -7,4 +7,28 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Views\Resources\froggy.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
+    <PackageReference Include="MaterialDesignThemes" Version="4.7.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Froggy.Database\Froggy.Database.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Models\DBSchema\CreateDB.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Views\Resources\froggy.png" />
+  </ItemGroup>
+
 </Project>
