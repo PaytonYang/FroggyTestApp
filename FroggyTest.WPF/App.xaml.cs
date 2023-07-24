@@ -37,8 +37,8 @@ public partial class App : Application
         services.AddSingleton<BlankView>();
 
         //Add MessageDialogView, MessageDialogViewModel to Service
-        services.AddTransient<NormalDialogView>();
-        services.AddTransient<NormalDialogViewModel>();
+        services.AddSingleton<NormalDialogView>();
+        services.AddSingleton<NormalDialogViewModel>();
 
         //Add Database Service
         services.AddSingleton<IDapperDB>(s => new SqliteDB("froggy.sqlite", @"Models\DBSchema\CreateDB.sql"));
