@@ -9,6 +9,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Froggy.Database", "Froggy.D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FroggyTest.WinForms", "FroggyTest.WinForms\FroggyTest.WinForms.csproj", "{C335DA36-F2AC-4447-9AA1-1AF6612B0D8E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FroggyTest.ConsoleApp", "FroggyTest.ConsoleApp\FroggyTest.ConsoleApp.csproj", "{46F8D334-59A8-4F55-BCCD-2E5737B37763}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Froggy.Camera", "Froggy.Camera\Froggy.Camera.csproj", "{0C8C7D37-5574-4AE8-A3C9-AD3D66F9DFAE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +30,14 @@ Global
 		{C335DA36-F2AC-4447-9AA1-1AF6612B0D8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C335DA36-F2AC-4447-9AA1-1AF6612B0D8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C335DA36-F2AC-4447-9AA1-1AF6612B0D8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46F8D334-59A8-4F55-BCCD-2E5737B37763}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46F8D334-59A8-4F55-BCCD-2E5737B37763}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46F8D334-59A8-4F55-BCCD-2E5737B37763}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46F8D334-59A8-4F55-BCCD-2E5737B37763}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C8C7D37-5574-4AE8-A3C9-AD3D66F9DFAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C8C7D37-5574-4AE8-A3C9-AD3D66F9DFAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C8C7D37-5574-4AE8-A3C9-AD3D66F9DFAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C8C7D37-5574-4AE8-A3C9-AD3D66F9DFAE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

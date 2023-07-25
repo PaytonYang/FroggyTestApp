@@ -362,3 +362,6 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /FroggyTest.WinForms
+/FroggyTest.Console/FroggyTest.Console.csproj
+/FroggyTest.ConsoleApp/FroggyTest.ConsoleApp.csproj
+/FroggyTest.ConsoleApp
