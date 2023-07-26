@@ -20,12 +20,6 @@ namespace Froggy.Camera
         public event FrameHandler FrameCallback;
         public event ErrorHandler ErrorCallback;
 
-        public AforgeCapture(FrameHandler frameCallback, ErrorHandler errorCallback)
-        {
-            FrameCallback = frameCallback;
-            ErrorCallback = errorCallback;
-        }
-
         public void Initialize(string deivceID, Resolution resolution)
         {
             try

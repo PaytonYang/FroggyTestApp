@@ -12,33 +12,36 @@ namespace Froggy.Camera
 {
     public class WebcamDevice
     {
-        public static List<WebcamInfo> GetWebcamInfoList()
+        public static async Task<List<WebcamInfo>> GetWebcamInfoList()
         {
             try
             {
                 List<WebcamInfo> results = new List<WebcamInfo>();
-                FilterInfoCollection webcams = new FilterInfoCollection(FilterCategory.VideoInputDevice);
-                foreach (FilterInfo webcam in webcams)
+                await Task.Run(() =>
                 {
-                    string deivce_id = webcam.MonikerString;
-                    VideoCaptureDevice device = new VideoCaptureDevice(deivce_id);
-                    WebcamInfo webcam_info = new WebcamInfo();
-                    webcam_info.Name = webcam.Name;
-                    webcam_info.DeviceID = deivce_id;
-                    foreach (VideoCapabilities cap in device.VideoCapabilities) 
+                    FilterInfoCollection webcams = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+                    foreach (FilterInfo webcam in webcams)
                     {
-                        webcam_info.Resolutions.Add(new Resolution { Width = cap.FrameSize.Width, Height = cap.FrameSize.Height });
+                        string deivce_id = webcam.MonikerString;
+                        VideoCaptureDevice device = new VideoCaptureDevice(deivce_id);
+                        WebcamInfo webcam_info = new WebcamInfo();
+                        webcam_info.Name = webcam.Name;
+                        webcam_info.DeviceID = deivce_id;
+                        foreach (VideoCapabilities cap in device.VideoCapabilities)
+                        {
+                            webcam_info.Resolutions.Add(new Resolution { Width = cap.FrameSize.Width, Height = cap.FrameSize.Height });
+                        }
+                        results.Add(webcam_info);
+                        device = null;
                     }
-                    results.Add(webcam_info);
-                    device = null;
-                }
+                });
                 return results;
             }
             catch { throw; }
         }
 
-        [DllImport("kernel32.dll", EntryPoint = "CopyMemory", SetLastError = false)]
-        private static extern void CopyMemory(IntPtr dest, IntPtr src, uint count);
+        [DllImport("kernel32.dll", EntryPoint = "RtlMoveMemory", SetLastError = false)]
+        public static extern void CopyMemory(IntPtr dest, IntPtr src, uint count);
     }
 
     public class WebcamInfo
