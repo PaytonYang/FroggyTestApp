@@ -8,7 +8,7 @@
         xmlns:viewModel="clr-namespace:FroggyTest.WPF.ViewModels"
         d:DataContext="{d:DesignInstance Type=viewModel:MainViewModel}"
         mc:Ignorable="d"
-        Title="Froggy Test App" Height="450" Width="800">
+        Title="Froggy Test App" Height="450" Width="800" Closing="Window_Closing">
     <materialDesign:DialogHost DialogTheme="Inherit" Identifier="RootDialog">
         <materialDesign:DrawerHost IsLeftDrawerOpen="{Binding ElementName=menuToggleButton, Path=IsChecked}">
             <!--Function Listbox-->

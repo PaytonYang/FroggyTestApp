@@ -39,6 +39,17 @@ public partial class CameraViewModel : ObservableObject
     public CameraViewModel(ICapture camera)
     {
         _camera = camera;
+        WeakReferenceMessenger.Default.Register<AppClosingMessages>(this, (r, m) =>
+        {
+            m.Reply(Task.Run(async () =>
+            {
+                if (!IsIdle)
+                {
+                    await StopCamera();
+                }
+                return true;
+            }));
+        });
     }
 
     [RelayCommand]
@@ -59,7 +70,7 @@ public partial class CameraViewModel : ObservableObject
                 _camera.Start();
             });
         }
-        catch(Exception error) { WeakReferenceMessenger.Default.Send(new ShowNormalDialogMessage($"Start Camera Error: {error.Message}")); }
+        catch(Exception error) { ShowNormalDialog.Send($"Start Camera Error: {error.Message}"); }
     }
 
     private bool CanStartCamera()
@@ -81,7 +92,7 @@ public partial class CameraViewModel : ObservableObject
                 Image = null;
             }).ContinueWith(t => Application.Current.Dispatcher.Invoke(() => IsIdle = true));
         }
-        catch (Exception error) { WeakReferenceMessenger.Default.Send(new ShowNormalDialogMessage($"Stop Camera Error: {error.Message}")); }
+        catch (Exception error) { ShowNormalDialog.Send($"Stop Camera Error: {error.Message}"); }
     }
 
     private bool CanStopCamera() => !IsIdle;
@@ -108,13 +119,13 @@ public partial class CameraViewModel : ObservableObject
         }
         catch(Exception error) 
         {
-            WeakReferenceMessenger.Default.Send(new ShowNormalDialogMessage($"Get Camera List Error: {error.Message}"));
+            ShowNormalDialog.Send($"Get Camera List Error: {error.Message}");
         }
     }
 
     private void _onError(Exception error)
     {
-        Application.Current.Dispatcher.Invoke(() => WeakReferenceMessenger.Default.Send(new ShowNormalDialogMessage($"Camera Error: {error.Message}")));
+        Application.Current.Dispatcher.Invoke(() => ShowNormalDialog.Send($"Camera Error: {error.Message}"));
     }
 
     private void _onFrame(IntPtr pointer, int width, int height, int depth)

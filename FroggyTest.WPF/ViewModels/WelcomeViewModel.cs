@@ -26,12 +26,12 @@ public partial class WelcomeViewModel : ObservableObject
         try
         {
             await Task.WhenAll(new[] { _database.CreateOrCheckDB(), _startupProcess() });
-            WeakReferenceMessenger.Default.Send(new WelcomeCompletedMessage(true));
+            WelcomeCompletedMessage.Send(true);
         }
         catch(Exception error)
         {
-            WeakReferenceMessenger.Default.Send(new ShowNormalDialogMessage($"Create database failed. Details: {error.GetBaseException().Message}"));
-            WeakReferenceMessenger.Default.Send(new WelcomeCompletedMessage(false));
+            ShowNormalDialog.Send($"Create database failed. Details: {error.GetBaseException().Message}");
+            WelcomeCompletedMessage.Send(false);
         }
     }
 

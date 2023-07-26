@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="FroggyTest.WPF.Views.YesNoDialogView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             xmlns:local="clr-namespace:FroggyTest.WPF.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="200" d:DesignWidth="350" Background="White">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+        <Border Grid.Row="1" Grid.Column="1" Margin="5" Padding="5" BorderThickness="1" BorderBrush="Teal" MinHeight="100" MaxWidth="350">
+            <TextBlock x:Name="message" Style="{StaticResource MaterialDesignSubtitle2TextBlock}" TextWrapping="Wrap"/>
+        </Border>
+        <UniformGrid Grid.Row="2" Grid.Column="1" Margin="5" Rows="1">
+            <Button Content="Yes" Margin="5,0" Style="{StaticResource MaterialDesignFlatMidBgButton}" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}">
+                <Button.CommandParameter>
+                    <system:Boolean>
+                        true
+                    </system:Boolean>
+                </Button.CommandParameter>
+            </Button>
+            <Button Content="No" Margin="5,0" Style="{StaticResource MaterialDesignFlatMidBgButton}" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}">
+                <Button.CommandParameter>
+                    <system:Boolean>
+                        false
+                    </system:Boolean>
+                </Button.CommandParameter>
+            </Button>
+        </UniformGrid>
+    </Grid>
+</UserControl>

@@ -41,6 +41,9 @@ public partial class App : Application
         services.AddSingleton<NormalDialogView>();
         services.AddSingleton<NormalDialogViewModel>();
 
+        //Add YesNoDialogView to Service
+        services.AddSingleton<YesNoDialogView>();
+
         //Add Database Service
         services.AddSingleton<IDapperDB>(s => new SqliteDB("froggy.sqlite", @"Models\DBSchema\CreateDB.sql"));
 

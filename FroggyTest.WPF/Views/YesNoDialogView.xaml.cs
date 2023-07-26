@@ -1,6 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.Messaging;
 using FroggyTest.WPF.Messages;
-using FroggyTest.WPF.ViewModels;
 using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
@@ -17,19 +16,21 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace FroggyTest.WPF.Views;
-
-public partial class NormalDialogView : UserControl
+namespace FroggyTest.WPF.Views
 {
-    public NormalDialogView(NormalDialogViewModel viewModel)
+    /// <summary>
+    /// Interaction logic for YesNoDialogView.xaml
+    /// </summary>
+    public partial class YesNoDialogView : UserControl
     {
-        this.DataContext = viewModel;
-        InitializeComponent();
-        WeakReferenceMessenger.Default.Register<ShowNormalDialog>(this, (r, m) => 
+        public YesNoDialogView()
         {
-            string message = m.Value;
-            this.message.Text = message;
-            DialogHost.Show(this, "RootDialog");
-        });
+            InitializeComponent();
+            WeakReferenceMessenger.Default.Register<ShowYesNoDialog>(this, (sender, e) => 
+            {
+                this.message.Text = e.Message;
+                e.Reply(DialogHost.Show(this, "RootDialog"));
+            });
+        }
     }
 }

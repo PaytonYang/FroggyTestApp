@@ -4,6 +4,7 @@ using FroggyTest.WPF.Messages;
 using FroggyTest.WPF.ViewModels;
 using MaterialDesignThemes.Wpf;
 using System;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace FroggyTest.WPF.Views;
@@ -16,8 +17,8 @@ public partial class MainView : Window
         this.DataContext= viewModel;
         InitializeComponent();
         WeakReferenceMessenger.Default.Register<WelcomeCompletedMessage>(this, (r, m) => _onWelcomeViewCompleted(m.Value));
-        //this.frame.Navigate(Ioc.Default.GetService<WelcomeView>());
-        this.frame.Navigate(Ioc.Default.GetService<CameraView>());
+        this.frame.Navigate(Ioc.Default.GetService<WelcomeView>());
+        //this.frame.Navigate(Ioc.Default.GetService<CameraView>());
     }
 
     private void logoutButton_Click(object sender, RoutedEventArgs e)
@@ -48,5 +49,20 @@ public partial class MainView : Window
         this.functionListBox.Items.Clear();
         this.functionListBox.Items.Add(Ioc.Default.GetService<CameraView>());
         this.functionListBox.Items.Add(Ioc.Default.GetService<AboutView>());
+    }
+
+    private async void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+    {
+        e.Cancel = true;
+        bool close_confirmed = await ShowYesNoDialog.Send("Do you want to close this app?");
+        if (close_confirmed) 
+        {
+            bool all_panel_closed = await AppClosingMessages.Send();
+            if (all_panel_closed)
+            {
+                this.Closing -= Window_Closing;
+                this.Close();
+            }
+        }
     }
 }

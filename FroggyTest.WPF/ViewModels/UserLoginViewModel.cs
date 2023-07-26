@@ -51,11 +51,11 @@ public partial class UserLoginViewModel : ObservableObject
             UserModel? current_user = await UserModel.CheckUserExitsted(_database, this.LoginUser);
             if (current_user == null)
             {
-                WeakReferenceMessenger.Default.Send(new ShowNormalDialogMessage("User name is not existed or password is incorrected."));
+                ShowNormalDialog.Send("User name is not existed or password is incorrected.");
             }
             else
             {
-                WeakReferenceMessenger.Default.Send(new UserLoginMessage(current_user));
+                UserLoginMessage.Send(current_user);
             }
         }
         catch { throw; }
@@ -73,8 +73,8 @@ public partial class UserLoginViewModel : ObservableObject
         try
         {
             UserModel? current_user = await UserModel.CheckUserExitsted(_database, this.RegisterUser);
-            if (current_user != null) { WeakReferenceMessenger.Default.Send(new ShowNormalDialogMessage($"User name {this.RegisterUser.UserName} is existed.")); return; }
-            if(this.RegisterUser.Password != this.ConfirmPassword) { WeakReferenceMessenger.Default.Send(new ShowNormalDialogMessage($"Confirm password is not correct.")); return; }
+            if (current_user != null) { ShowNormalDialog.Send($"User name {this.RegisterUser.UserName} is existed."); return; }
+            if(this.RegisterUser.Password != this.ConfirmPassword) { ShowNormalDialog.Send($"Confirm password is not correct."); return; }
             await UserModel.AddUser(_database, this.RegisterUser);
             RegisterCompletedCallback?.Invoke();
         }
