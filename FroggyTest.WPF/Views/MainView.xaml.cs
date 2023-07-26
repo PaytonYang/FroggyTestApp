@@ -16,7 +16,8 @@ public partial class MainView : Window
         this.DataContext= viewModel;
         InitializeComponent();
         WeakReferenceMessenger.Default.Register<WelcomeCompletedMessage>(this, (r, m) => _onWelcomeViewCompleted(m.Value));
-        this.frame.Navigate(Ioc.Default.GetService<WelcomeView>());
+        //this.frame.Navigate(Ioc.Default.GetService<WelcomeView>());
+        this.frame.Navigate(Ioc.Default.GetService<CameraView>());
     }
 
     private void logoutButton_Click(object sender, RoutedEventArgs e)

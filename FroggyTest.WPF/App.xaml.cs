@@ -4,6 +4,7 @@ using CommunityToolkit.Mvvm.DependencyInjection;
 using FroggyTest.WPF.Views;
 using FroggyTest.WPF.ViewModels;
 using Froggy.Database;
+using Froggy.Camera;
 
 namespace FroggyTest.WPF;
 
@@ -42,6 +43,9 @@ public partial class App : Application
 
         //Add Database Service
         services.AddSingleton<IDapperDB>(s => new SqliteDB("froggy.sqlite", @"Models\DBSchema\CreateDB.sql"));
+
+        //Add Camera Service
+        services.AddSingleton<ICapture, AforgeCapture>();
 
         //Configre services to Ioc
         Ioc.Default.ConfigureServices(services.BuildServiceProvider());
